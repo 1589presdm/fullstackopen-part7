@@ -7,23 +7,30 @@ const CreateNew = ({ addAnecdote }) => {
   const info = useField('url')
   const navigate = useNavigate()
 
+  const { reset: resetContent, ...contentProps } = content
+  const { reset: resetAuthor, ...authorProps } = author
+  const { reset: resetInfo, ...infoProps } = info
+
+
+
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    addAnecdote({ 
-      content:content.value, 
-      author: author.value, 
-      info: info.value, 
-      votes: 0 })
+    addAnecdote({
+      content: content.value,
+      author: author.value,
+      info: info.value,
+      votes: 0
+    })
     navigate("/")
   }
 
-  const handleReset = (event) => {
-    content.reset()
-    author.reset()
-    info.reset()
+  const handleReset = () => {
+    resetContent()
+    resetAuthor()
+    resetInfo()
   }
-  
+
 
   return (
     <div>
@@ -31,15 +38,15 @@ const CreateNew = ({ addAnecdote }) => {
       <form onSubmit={handleSubmit}>
         <div>
           content
-          <input {...content} />
+          <input {...contentProps} />
         </div>
         <div>
           author
-          <input {...author} />
+          <input {...authorProps} />
         </div>
         <div>
           url for more info
-          <input {...info} />
+          <input {...infoProps} />
         </div>
         <div>
           {content.value} {author.value} {info.value}
