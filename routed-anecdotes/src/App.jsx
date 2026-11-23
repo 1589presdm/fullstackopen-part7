@@ -7,9 +7,7 @@ import CreateNew from './components/CreateNew'
 import useAnecdotes from './hooks/useAnecdotes'
 
 const App = () => {
-  const {anecdotes} = useAnecdotes()
-
-  const addAnecdote = () => {}
+  const {anecdotes, createAnecdote } = useAnecdotes()
 
   return (
     <Router>
@@ -18,7 +16,7 @@ const App = () => {
         <Menu />
         <Routes>
           <Route path="/" element={<AnecdoteList anecdotes={anecdotes} />} />
-          <Route path="/create" element={<CreateNew addAnecdote={addAnecdote} />} />
+          <Route path="/create" element={<CreateNew addAnecdote={createAnecdote} />} />
           <Route path="/about" element={<About />} />
         </Routes>
         <Footer />

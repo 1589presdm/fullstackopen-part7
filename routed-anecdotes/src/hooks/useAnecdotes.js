@@ -8,7 +8,13 @@ const useAnecdotes = () => {
         anecdoteService.getAll().then(anecdotes => setAnecdotes(anecdotes))
     }, [])
 
-    return { anecdotes }
+    const createAnecdote = (anecdote) => {
+        anecdoteService.createNew(anecdote).then(createdAnecdote => {
+            setAnecdotes([...anecdotes, createdAnecdote])
+        })
+    }
+
+    return { anecdotes, createAnecdote }
 }
 
 export default useAnecdotes
