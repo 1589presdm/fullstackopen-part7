@@ -1,13 +1,13 @@
 import { useNavigate } from "react-router"
 import { useField } from "../hooks"
-import useAnecdotes from '../hooks/useAnecdotes'
+import { useAnecdotes } from '../hooks/useAnecdotes'
 
-const CreateNew = ({}) => {
+const CreateNew = ({ }) => {
   const content = useField('text')
   const author = useField('text')
   const info = useField('url')
   const navigate = useNavigate()
-  const { createAnecdote } = useAnecdotes()
+  const { addAnecdote } = useAnecdotes()
 
   const { reset: resetContent, ...contentProps } = content
   const { reset: resetAuthor, ...authorProps } = author
@@ -22,7 +22,7 @@ const CreateNew = ({}) => {
       info: info.value,
       votes: 0
     }
-    await createAnecdote(anecdote)
+    await addAnecdote(anecdote)
     navigate("/")
   }
 

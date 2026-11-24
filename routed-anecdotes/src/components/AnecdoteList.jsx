@@ -1,4 +1,4 @@
-import useAnecdotes from '../hooks/useAnecdotes'
+import { useAnecdotes } from '../hooks/useAnecdotes'
 
 
 const AnecdoteList = () => {
@@ -15,7 +15,7 @@ const AnecdoteList = () => {
         {anecdotes.map(anecdote => <li key={anecdote.id}>{anecdote.content}{' '}
           <button onClick={() => handleDelete(anecdote.id)}>delete</button></li>)}
       </ul>
-      
+
     </div >
   )
 }

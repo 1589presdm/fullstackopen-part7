@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react'
 import anecdoteService from '../services/anecdotes'
 
-const useAnecdotes = () => {
+export const useAnecdotes = () => {
     const [anecdotes, setAnecdotes] = useState([])
 
     useEffect(() => {
         anecdoteService.getAll().then(anecdotes => setAnecdotes(anecdotes))
     }, [])
 
-    const createAnecdote = (anecdote) => {
+    const addAnecdote = (anecdote) => {
          return anecdoteService.createNew(anecdote).then(createdAnecdote => {
             setAnecdotes([...anecdotes, createdAnecdote])
         })
@@ -20,7 +20,5 @@ const useAnecdotes = () => {
         })
     }
 
-    return { anecdotes, createAnecdote, deleteAnecdote }
+    return { anecdotes, addAnecdote, deleteAnecdote }
 }
-
-export default useAnecdotes
