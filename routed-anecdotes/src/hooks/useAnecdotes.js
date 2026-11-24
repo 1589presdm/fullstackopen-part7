@@ -9,12 +9,18 @@ const useAnecdotes = () => {
     }, [])
 
     const createAnecdote = (anecdote) => {
-        anecdoteService.createNew(anecdote).then(createdAnecdote => {
+         return anecdoteService.createNew(anecdote).then(createdAnecdote => {
             setAnecdotes([...anecdotes, createdAnecdote])
         })
     }
 
-    return { anecdotes, createAnecdote }
+    const deleteAnecdote = (id) => {
+        anecdoteService.remove(id).then(() => {
+            setAnecdotes(anecdotes.filter(a => a.id !== id))
+        })
+    }
+
+    return { anecdotes, createAnecdote, deleteAnecdote }
 }
 
 export default useAnecdotes
