@@ -7,8 +7,10 @@ const usersRouter = require('./controllers/users')
 const middleware = require('./utils/middleware')
 const loginRouter = require('./controllers/login')
 
-
+const path = require('path')
 const app = express()
+
+app.use(express.static(path.join(__dirname, '../client/dist')))
 
 mongoose.connect(config.MONGODB_URI, { family: 4 })
     .then(() => {
